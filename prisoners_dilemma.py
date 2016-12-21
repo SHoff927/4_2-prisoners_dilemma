@@ -1,7 +1,10 @@
 from __future__ import print_function
 
-##### 
-# Hi
+#####
+
+# Hi from Megan
+=======
+# 
 # Computer Science and Software Engineering
 # PLTW AP CS Principles
 # (c)2014 Project Lead The Way, Inc.
@@ -159,6 +162,22 @@ def play_round(player1, player2, score1, score2, moves1, moves2):
         # Both players betray; get punishment.   
         score1 += PUNISHMENT
         score2 += PUNISHMENT     
+    elif actions == ' bb':
+        # Both players betray; get punishment.   
+        score1 += TREAT
+        score2 += PUNISHMENT  
+    elif actions == 'b b':
+        # Both players betray; get punishment.   
+        score1 += PUNISHMENT
+        score2 += TREAT  
+    elif actions == ' bc':
+        # Player 1 colludes, player 2 betrays; get severe, treat.
+        score1 += TREAT
+        score2 += SEVERE_PUNISHMENT    
+    elif actions == 'c b':
+        # Player 2 colludes, player 1 betrays; get severe, treat.
+        score1 += SEVERE_PUNISHMENT
+        score2 += TREAT
     else:
         # Both players get the "error score" if someone's code returns an improper action.
         score1 += ERROR
@@ -375,10 +394,9 @@ def post_to_file(string, filename='tournament.txt', directory=''):
     filehandle = open(filename,'w')
     filehandle.write(string)
  
-### Call main_play() if this file is executed
-if __name__ == '__main__':
-    scores, moves, reports = main_play(modules[0:4])   
-    section0, section1, section2, section3 = reports
+    if __name__ == '__main__':
+        scores, moves, reports = main_play(modules[0:4])   
+        section0, section1, section2, section3 = reports
     ####
 # Each team's file must define four tokens:
 #     team_name: a string
@@ -403,6 +421,10 @@ def move(my_history, their_history, my_score, their_score):
     # their_history: a string of the same length as history, possibly empty. 
     # The first round between these two players is my_history[0] and their_history[0].
     # The most recent round is my_history[-1] and their_history[-1].
+    
+
+def team_name():
+    team_name = 'The name the team gives itself'
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
@@ -454,4 +476,3 @@ else:
             return 'b' # Betray.
 else:
     return 'c' # but 90% of the time collude     
-   
