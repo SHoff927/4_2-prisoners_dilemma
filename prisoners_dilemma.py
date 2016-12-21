@@ -161,11 +161,18 @@ def play_round(player1, player2, score1, score2, moves1, moves2):
         # Both players betray; get punishment.   
         score1 += PUNISHMENT
         score2 += PUNISHMENT     
+    elif actions == ' bb':
+        # Both players betray; get punishment.   
+        score1 += TREAT
+        score2 += PUNISHMENT  
+    elif actions == 'b b':
+        # Both players betray; get punishment.   
+        score1 += PUNISHMENT
+        score2 += TREAT  
     elif actions == ' bc':
         # Player 1 colludes, player 2 betrays; get severe, treat.
         score1 += TREAT
-        score2 += SEVERE_PUNISHMENT
-        
+        score2 += SEVERE_PUNISHMENT    
     elif actions == 'c b':
         # Player 2 colludes, player 1 betrays; get severe, treat.
         score1 += SEVERE_PUNISHMENT
